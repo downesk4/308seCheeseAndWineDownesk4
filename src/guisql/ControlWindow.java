@@ -32,22 +32,37 @@ public class ControlWindow extends javax.swing.JFrame {
     public ControlWindow() {
         initComponents();
         Show_cheeseList_in_JTable();
-        
+        Show_boardList_in_JTable();
     }
 
     int pos = 0;
     
-    public Connection getConnection()
+    public Connection getboardConnection()  //cheeseboard
+    {
+        Connection con2 = null;
+        
+        try {
+            con2 = DriverManager.getConnection("jdbc:mysql://localhost/cheeseboard", "root", "");
+           //JOptionPane.showMessageDialog(null, "connected");  //check its connected
+            return con2;
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "cheeseboard Not connected");  //check its connected
+            return null;
+        }
+    }
+     
+    public Connection getConnection()  //cheese
     {
         Connection con = null;
         
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost/cheese", "root", "");
-           // JOptionPane.showMessageDialog(null, "connected");  //check its connected
+           //JOptionPane.showMessageDialog(null, "connected");  //check its connected
             return con;
         } catch (SQLException ex) {
             Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
-            //JOptionPane.showMessageDialog(null, "Not connected");  //check its connected
+            JOptionPane.showMessageDialog(null, "cheese Not connected");  //check its connected
             return null;
         }
     }
@@ -76,9 +91,64 @@ public class ControlWindow extends javax.swing.JFrame {
         }
     }
     
+    
+    
     //fill array with data
     
-    public ArrayList<cheesemain> getCheeseList()
+    public ArrayList<cheeseboardmain> getcheeseBoardList() //cheesesboad
+    {
+            ArrayList<cheeseboardmain> boardList = new ArrayList<cheeseboardmain>();
+            Connection con2 = getboardConnection();
+            String query = "SELECT * FROM cheeseboard";
+            
+            Statement state;
+            ResultSet result;
+        try {
+            
+            state = con2.createStatement();
+            result = state.executeQuery(query);
+            cheeseboardmain cheeseboard; 
+            
+            while(result.next())
+               {
+                cheeseboard = new cheeseboardmain(result.getInt("id"),result.getString("name"),Float.parseFloat(result.getString("cost")),result.getString("status"));                
+                boardList.add(cheeseboard);                
+               }
+            
+            } 
+        catch (SQLException ex) 
+            {
+            Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        return boardList;
+    }
+    
+    
+    //show in table
+    public void Show_boardList_in_JTable()  //cheeseboard
+    {
+        
+        ArrayList<cheeseboardmain> list1 = getcheeseBoardList();
+        DefaultTableModel model = (DefaultTableModel)JTable_cheeseboard.getModel();
+        
+        
+        model.setRowCount(0);  //clear JTable
+        Object[] row = new Object[4];
+        for(int i = 0; i < list1.size(); i++)
+        {
+           row[0] = list1.get(i).getBoardid(); 
+           row[1] = list1.get(i).getBoardname(); 
+           row[2] = list1.get(i).getBoardcost();  
+           row[3] = list1.get(i).getBoardstatus();  
+           
+           model.addRow(row);
+        }
+    }
+    
+    //fill array with data
+    
+    public ArrayList<cheesemain> getCheeseList() //cheeses
     {
             ArrayList<cheesemain> cheeseList = new ArrayList<cheesemain>();
             Connection con = getConnection();
@@ -109,7 +179,7 @@ public class ControlWindow extends javax.swing.JFrame {
     
     //fill the table
     
-    public void Show_cheeseList_in_JTable()
+    public void Show_cheeseList_in_JTable()  //cheeses
     {
         
         ArrayList<cheesemain> list = getCheeseList();
@@ -198,6 +268,19 @@ public class ControlWindow extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txt_statusboard = new javax.swing.JTextField();
+        txt_costboard = new javax.swing.JTextField();
+        txt_nameboard = new javax.swing.JTextField();
+        txt_idboard = new javax.swing.JTextField();
+        Btn_Insert1 = new javax.swing.JButton();
+        Btn_Update1 = new javax.swing.JButton();
+        Btn_Delete1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTable_cheeseboard = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -309,6 +392,57 @@ public class ControlWindow extends javax.swing.JFrame {
 
         jLabel12.setText("Info:");
 
+        jLabel13.setText("ID:");
+
+        jLabel14.setText("Name:");
+
+        jLabel15.setText("Cost:");
+
+        jLabel16.setText("Status:");
+
+        txt_costboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_costboardActionPerformed(evt);
+            }
+        });
+
+        txt_nameboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nameboardActionPerformed(evt);
+            }
+        });
+
+        Btn_Insert1.setText("Add");
+        Btn_Insert1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Insert1ActionPerformed(evt);
+            }
+        });
+
+        Btn_Update1.setText("Update");
+        Btn_Update1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Update1ActionPerformed(evt);
+            }
+        });
+
+        Btn_Delete1.setText("Delete");
+        Btn_Delete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Delete1ActionPerformed(evt);
+            }
+        });
+
+        JTable_cheeseboard.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Name", "Cost", "Status"
+            }
+        ));
+        jScrollPane2.setViewportView(JTable_cheeseboard);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -316,47 +450,17 @@ public class ControlWindow extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(17, 17, 17)
-                                        .addComponent(jLabel1))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_price, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_style, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Btn_Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Update)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Delete)
-                                .addGap(200, 200, 200)
-                                .addComponent(Btn_First)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Previous)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Next)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Last))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(14, 14, 14))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addGap(6, 6, 6))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                        .addGap(18, 18, 18)))
                                 .addComponent(txt_info, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,8 +483,62 @@ public class ControlWindow extends javax.swing.JFrame {
                                     .addComponent(txt_rating)
                                     .addComponent(txt_age))))
                         .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(394, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Btn_Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Btn_Update)
+                                .addGap(18, 18, 18)
+                                .addComponent(Btn_Delete)
+                                .addGap(200, 200, 200)
+                                .addComponent(Btn_First)
+                                .addGap(18, 18, 18)
+                                .addComponent(Btn_Previous)
+                                .addGap(18, 18, 18)
+                                .addComponent(Btn_Next)
+                                .addGap(18, 18, 18)
+                                .addComponent(Btn_Last))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel1))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_price, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_style, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(Btn_Update1)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(Btn_Delete1))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGap(16, 16, 16)
+                                                        .addComponent(jLabel13))
+                                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txt_nameboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txt_idboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txt_costboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txt_statusboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(Btn_Insert1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,24 +603,42 @@ public class ControlWindow extends javax.swing.JFrame {
                     .addComponent(Btn_First)
                     .addComponent(Btn_Previous)
                     .addComponent(Btn_Last))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_idboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nameboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_costboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_statusboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Btn_Insert1)
+                            .addComponent(Btn_Update1)
+                            .addComponent(Btn_Delete1)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -638,6 +814,26 @@ public class ControlWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_priceActionPerformed
 
+    private void txt_costboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_costboardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_costboardActionPerformed
+
+    private void txt_nameboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameboardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nameboardActionPerformed
+
+    private void Btn_Insert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Insert1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Insert1ActionPerformed
+
+    private void Btn_Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Update1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Update1ActionPerformed
+
+    private void Btn_Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Delete1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Delete1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -675,17 +871,25 @@ public class ControlWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Delete;
+    private javax.swing.JButton Btn_Delete1;
     private javax.swing.JButton Btn_First;
     private javax.swing.JButton Btn_Insert;
+    private javax.swing.JButton Btn_Insert1;
     private javax.swing.JButton Btn_Last;
     private javax.swing.JButton Btn_Next;
     private javax.swing.JButton Btn_Previous;
     private javax.swing.JButton Btn_Update;
+    private javax.swing.JButton Btn_Update1;
     private javax.swing.JTable JTable_cheese;
+    private javax.swing.JTable JTable_cheeseboard;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -696,14 +900,19 @@ public class ControlWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField txt_age;
+    private javax.swing.JTextField txt_costboard;
     private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_idboard;
     private javax.swing.JTextField txt_info;
     private javax.swing.JTextField txt_milk;
     private javax.swing.JTextField txt_name;
+    private javax.swing.JTextField txt_nameboard;
     private javax.swing.JTextField txt_origin;
     private javax.swing.JTextField txt_price;
     private javax.swing.JTextField txt_rating;
+    private javax.swing.JTextField txt_statusboard;
     private javax.swing.JTextField txt_stock;
     private javax.swing.JTextField txt_strength;
     private javax.swing.JTextField txt_style;
