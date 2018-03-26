@@ -14,4 +14,37 @@ package guisql;
  */
 public class cheeseboardmain {
     
+    private int boardid;
+    private String boardname;
+    private float boardcost;
+    private String boardstatus;
+    
+    public cheeseboardmain(int pboardid, String pboardname, float pboardcost, String pboardstatus)
+    {
+        this.boardid = pboardid;
+        this.boardname = pboardname;
+        this.boardcost = pboardcost;
+        this.boardstatus = pboardstatus;
+    }    
+  
+    
+    public int getBoardid()
+    {
+        return boardid; 
+    }
+    
+    public String getBoardname()
+    {
+        return boardname;
+    }
+    
+    public float getBoardcost()
+    {
+        return boardcost;
+    }
+    
+    public String getBoardstatus()
+    {
+        return boardstatus;
+    }
 }
