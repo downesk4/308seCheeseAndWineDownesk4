@@ -36,6 +36,7 @@ public class ControlWindow extends javax.swing.JFrame {
     }
 
     int pos = 0;
+    int pos1 = 0;
     
     public Connection getboardConnection()  //cheeseboard
     {
@@ -454,6 +455,11 @@ public class ControlWindow extends javax.swing.JFrame {
                 "ID", "Name", "Cost", "Status"
             }
         ));
+        JTable_cheeseboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTable_cheeseboardMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(JTable_cheeseboard);
 
         Btn_First1.setText("First");
@@ -961,21 +967,47 @@ public class ControlWindow extends javax.swing.JFrame {
     private void Btn_First1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_First1ActionPerformed
         // TODO add your handling code here:
         //cheeseboard
-        pos = 0;
-        ShowBoardItem(pos);
+        pos1 = 0;
+        ShowBoardItem(pos1);
     }//GEN-LAST:event_Btn_First1ActionPerformed
 
     private void Btn_Previous1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Previous1ActionPerformed
         // TODO add your handling code here:
+        //cheseeboard
+        pos1--;
+        
+        if(pos1 < 0)
+        {
+            pos1 = 0;
+        }      
+        ShowBoardItem(pos1);
     }//GEN-LAST:event_Btn_Previous1ActionPerformed
 
     private void Btn_Next1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Next1ActionPerformed
         // TODO add your handling code here:
+       //cheeseboard 
+       pos1++;
+       
+       if(pos1 >= getcheeseBoardList().size())
+       {
+            pos1 = getcheeseBoardList().size()-1;
+       }
+       ShowBoardItem(pos1);
     }//GEN-LAST:event_Btn_Next1ActionPerformed
 
     private void Btn_Last1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Last1ActionPerformed
         // TODO add your handling code here:
+        //cheeseboard
+        pos1 = getcheeseBoardList().size()-1;
+        ShowBoardItem(pos1);
     }//GEN-LAST:event_Btn_Last1ActionPerformed
+
+    private void JTable_cheeseboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable_cheeseboardMouseClicked
+        // TODO add your handling code here:
+        //cheeseboard
+        int index = JTable_cheeseboard.getSelectedRow();
+        ShowBoardItem(index);
+    }//GEN-LAST:event_JTable_cheeseboardMouseClicked
 
     /**
      * @param args the command line arguments
