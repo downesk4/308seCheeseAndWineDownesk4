@@ -38,20 +38,7 @@ public class ControlWindow extends javax.swing.JFrame {
     int pos = 0;
     int pos1 = 0;
     
-    public Connection getboardConnection()  //cheeseboard
-    {
-        Connection con2 = null;
-        
-        try {
-            con2 = DriverManager.getConnection("jdbc:mysql://localhost/cheeseboard", "root", "");
-           //JOptionPane.showMessageDialog(null, "connected");  //check its connected
-            return con2;
-        } catch (SQLException ex) {
-            Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "cheeseboard Not connected");  //check its connected
-            return null;
-        }
-    }
+    
      
     public Connection getConnection()  //cheese
     {
@@ -99,14 +86,14 @@ public class ControlWindow extends javax.swing.JFrame {
     public ArrayList<cheeseboardmain> getcheeseBoardList() //cheesesboad
     {
             ArrayList<cheeseboardmain> boardList = new ArrayList<cheeseboardmain>();
-            Connection con2 = getboardConnection();
+            Connection con = getConnection();
             String query = "SELECT * FROM cheeseboard";
             
             Statement state;
             ResultSet result;
         try {
             
-            state = con2.createStatement();
+            state = con.createStatement();
             result = state.executeQuery(query);
             cheeseboardmain cheeseboard; 
             
@@ -893,8 +880,8 @@ public class ControlWindow extends javax.swing.JFrame {
     private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
     //cheaseboard
     try {
-            Connection con2 = getboardConnection();
-            PreparedStatement ps = con2.prepareStatement("INSERT INTO cheeseboard(name,cost,status)"  //"cheeseboard in this instance is the table name
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO cheeseboard(name,cost,status)"  //"cheeseboard in this instance is the table name
                          + "values(?,?,?)");
             ps.setString(1, txt_nameboard.getText());
             ps.setString(2, txt_costboard.getText());
@@ -915,12 +902,12 @@ public class ControlWindow extends javax.swing.JFrame {
       //cheeseboard  // TODO add your handling code here:
           String UpdateQuery = null;
           PreparedStatement ps = null;
-          Connection con2 = getboardConnection();
+          Connection con = getConnection();
           
           try
           {
             UpdateQuery = "UPDATE cheeseboard SET name = ?, cost = ?, status = ? WHERE id = ?";
-            ps = con2.prepareStatement(UpdateQuery);
+            ps = con.prepareStatement(UpdateQuery);
             
              ps.setString(1, txt_nameboard.getText());
              ps.setString(2, txt_costboard.getText());
@@ -942,8 +929,8 @@ public class ControlWindow extends javax.swing.JFrame {
     if(!txt_idboard.getText().equals(""))
        {      
            try {
-               Connection con2 = getboardConnection();
-               PreparedStatement ps = con2.prepareStatement("DELETE FROM cheeseboard WHERE id = ?");
+               Connection con = getConnection();
+               PreparedStatement ps = con.prepareStatement("DELETE FROM cheeseboard WHERE id = ?");
                int id = Integer.parseInt(txt_idboard.getText()); 
                ps.setInt(1, id);
                ps.executeUpdate();
