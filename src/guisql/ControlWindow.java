@@ -208,7 +208,7 @@ public class ControlWindow extends javax.swing.JFrame {
         }
     }
             
-    public void ShowItem(int index) 
+    public void ShowItem(int index) //cheese-to show in textfilds to prevent re typing
     {
         
          txt_id.setText(Integer.toString(getCheeseList().get(index).getid()));
@@ -223,6 +223,14 @@ public class ControlWindow extends javax.swing.JFrame {
          txt_rating.setText(getCheeseList().get(index).getRating());
          txt_stock.setText(Float.toString(getCheeseList().get(index).getStock()));
          txt_info.setText(getCheeseList().get(index).getInfo());  
+    }
+    
+    public void ShowBoardItem(int index) //cheeseboard -- need to put in a class
+    {
+        txt_idboard.setText(Integer.toString(getcheeseBoardList().get(index).getBoardid()));
+        txt_nameboard.setText(getcheeseBoardList().get(index).getBoardname());
+        txt_costboard.setText(Float.toString(getcheeseBoardList().get(index).getBoardcost()));
+        txt_statusboard.setText(getcheeseBoardList().get(index).getBoardstatus());
     }
     
     
@@ -952,6 +960,9 @@ public class ControlWindow extends javax.swing.JFrame {
 
     private void Btn_First1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_First1ActionPerformed
         // TODO add your handling code here:
+        //cheeseboard
+        pos = 0;
+        ShowBoardItem(pos);
     }//GEN-LAST:event_Btn_First1ActionPerformed
 
     private void Btn_Previous1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Previous1ActionPerformed
