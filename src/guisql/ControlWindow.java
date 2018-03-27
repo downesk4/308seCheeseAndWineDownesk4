@@ -277,7 +277,7 @@ public class ControlWindow extends javax.swing.JFrame {
         txt_costboard = new javax.swing.JTextField();
         txt_nameboard = new javax.swing.JTextField();
         txt_idboard = new javax.swing.JTextField();
-        Btn_Insert1 = new javax.swing.JButton();
+        Btn_Add = new javax.swing.JButton();
         Btn_Update1 = new javax.swing.JButton();
         Btn_Delete1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -413,10 +413,10 @@ public class ControlWindow extends javax.swing.JFrame {
             }
         });
 
-        Btn_Insert1.setText("Add");
-        Btn_Insert1.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Add.setText("Add");
+        Btn_Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Insert1ActionPerformed(evt);
+                Btn_AddActionPerformed(evt);
             }
         });
 
@@ -536,7 +536,7 @@ public class ControlWindow extends javax.swing.JFrame {
                                                 .addComponent(txt_idboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txt_costboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txt_statusboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(Btn_Insert1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(86, Short.MAX_VALUE))
@@ -624,7 +624,7 @@ public class ControlWindow extends javax.swing.JFrame {
                             .addComponent(jLabel16))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Btn_Insert1)
+                            .addComponent(Btn_Add)
                             .addComponent(Btn_Update1)
                             .addComponent(Btn_Delete1)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -823,12 +823,51 @@ public class ControlWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nameboardActionPerformed
 
-    private void Btn_Insert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Insert1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_Insert1ActionPerformed
+    private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
+    //cheaseboard
+    try {
+            Connection con2 = getboardConnection();
+            PreparedStatement ps = con2.prepareStatement("INSERT INTO cheeseboard(name,cost,status)"  //"cheeseboard in this instance is the table name
+                         + "values(?,?,?)");
+            ps.setString(1, txt_nameboard.getText());
+            ps.setString(2, txt_costboard.getText());
+            ps.setString(3, txt_statusboard.getText());
+
+            ps.executeUpdate();
+            Show_boardList_in_JTable();
+
+        } 
+    catch (SQLException ex) 
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+   // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_AddActionPerformed
 
     private void Btn_Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Update1ActionPerformed
-        // TODO add your handling code here:
+      //cheeseboard  // TODO add your handling code here:
+          String UpdateQuery = null;
+          PreparedStatement ps = null;
+          Connection con2 = getboardConnection();
+          
+          try
+          {
+            UpdateQuery = "UPDATE cheeseboard SET name = ?, cost = ?, status = ? WHERE id = ?";
+            ps = con2.prepareStatement(UpdateQuery);
+            
+             ps.setString(1, txt_nameboard.getText());
+             ps.setString(2, txt_costboard.getText());
+             ps.setString(3, txt_statusboard.getText()); 
+             ps.setInt(4, Integer.parseInt(txt_idboard.getText()));
+             
+             ps.executeUpdate();
+             Show_boardList_in_JTable();
+             JOptionPane.showMessageDialog(null, "cheeseboard Updated");
+          } 
+          catch (SQLException ex) 
+          {
+              Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+          }
     }//GEN-LAST:event_Btn_Update1ActionPerformed
 
     private void Btn_Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Delete1ActionPerformed
@@ -871,11 +910,11 @@ public class ControlWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_Add;
     private javax.swing.JButton Btn_Delete;
     private javax.swing.JButton Btn_Delete1;
     private javax.swing.JButton Btn_First;
     private javax.swing.JButton Btn_Insert;
-    private javax.swing.JButton Btn_Insert1;
     private javax.swing.JButton Btn_Last;
     private javax.swing.JButton Btn_Next;
     private javax.swing.JButton Btn_Previous;

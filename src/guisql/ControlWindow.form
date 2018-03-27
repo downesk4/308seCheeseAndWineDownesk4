@@ -154,7 +154,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <Component id="Btn_Insert1" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="Btn_Add" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" pref="358" max="-2" attributes="0"/>
@@ -268,7 +268,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Btn_Insert1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Btn_Add" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="Btn_Update1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="Btn_Delete1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -563,12 +563,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_idboard">
         </Component>
-        <Component class="javax.swing.JButton" name="Btn_Insert1">
+        <Component class="javax.swing.JButton" name="Btn_Add">
           <Properties>
             <Property name="text" type="java.lang.String" value="Add"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Btn_Insert1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Btn_AddActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Btn_Update1">
