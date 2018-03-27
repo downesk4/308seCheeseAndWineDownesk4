@@ -99,7 +99,7 @@ public class ControlWindow extends javax.swing.JFrame {
             
             while(result.next())
                {
-                cheeseboard = new cheeseboardmain(result.getInt("id"),result.getString("name"),Float.parseFloat(result.getString("cost")),result.getString("status"));                
+                cheeseboard = new cheeseboardmain(result.getInt("id"),result.getString("name"),Float.parseFloat(result.getString("cost")),result.getString("status"),result.getString("cheeses"));                
                 boardList.add(cheeseboard);                
                }
             
@@ -123,14 +123,14 @@ public class ControlWindow extends javax.swing.JFrame {
         
         
         model.setRowCount(0);  //clear JTable
-        Object[] row = new Object[4];
+        Object[] row = new Object[5];
         for(int i = 0; i < list1.size(); i++)
         {
            row[0] = list1.get(i).getBoardid(); 
            row[1] = list1.get(i).getBoardname(); 
            row[2] = list1.get(i).getBoardcost();  
            row[3] = list1.get(i).getBoardstatus();  
-           
+           row[4] = list1.get(i).getBoardcheeses();
            model.addRow(row);
         }
     }
@@ -219,6 +219,7 @@ public class ControlWindow extends javax.swing.JFrame {
         txt_nameboard.setText(getcheeseBoardList().get(index).getBoardname());
         txt_costboard.setText(Float.toString(getcheeseBoardList().get(index).getBoardcost()));
         txt_statusboard.setText(getcheeseBoardList().get(index).getBoardstatus());
+        txt_cheesesboard.setText(getcheeseBoardList().get(index).getBoardcheeses());
     }
     
     
@@ -282,6 +283,27 @@ public class ControlWindow extends javax.swing.JFrame {
         Btn_Previous1 = new javax.swing.JButton();
         Btn_Next1 = new javax.swing.JButton();
         Btn_Last1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        txt_cheesesboard = new javax.swing.JTextField();
+        txt_cheesesboard1 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        txt_statusboard1 = new javax.swing.JTextField();
+        txt_costboard1 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        txt_nameboard1 = new javax.swing.JTextField();
+        txt_idboard1 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        JTable_linktable = new javax.swing.JTable();
+        Btn_Add1 = new javax.swing.JButton();
+        Btn_Update2 = new javax.swing.JButton();
+        Btn_Delete2 = new javax.swing.JButton();
+        Btn_First2 = new javax.swing.JButton();
+        Btn_Previous2 = new javax.swing.JButton();
+        Btn_Next2 = new javax.swing.JButton();
+        Btn_Last2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -439,7 +461,7 @@ public class ControlWindow extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "Cost", "Status"
+                "ID", "Name", "Cost", "Status", "Cheeses"
             }
         ));
         JTable_cheeseboard.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -477,12 +499,100 @@ public class ControlWindow extends javax.swing.JFrame {
             }
         });
 
+        jLabel17.setText("Cheeses:");
+
+        jLabel18.setText("Cost:");
+
+        jLabel19.setText("Quantity:");
+
+        txt_costboard1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_costboard1ActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("CheeseID:");
+
+        jLabel21.setText("BoardID:");
+
+        txt_nameboard1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nameboard1ActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setText("RowID:");
+
+        JTable_linktable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "RowID", "BoardID", "CheeseID", "Quantity(KG)", "Cost(£)"
+            }
+        ));
+        JTable_linktable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTable_linktableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(JTable_linktable);
+
+        Btn_Add1.setText("Add");
+        Btn_Add1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Add1ActionPerformed(evt);
+            }
+        });
+
+        Btn_Update2.setText("Update");
+        Btn_Update2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Update2ActionPerformed(evt);
+            }
+        });
+
+        Btn_Delete2.setText("Delete");
+        Btn_Delete2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Delete2ActionPerformed(evt);
+            }
+        });
+
+        Btn_First2.setText("First");
+        Btn_First2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_First2ActionPerformed(evt);
+            }
+        });
+
+        Btn_Previous2.setText("Previous");
+        Btn_Previous2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Previous2ActionPerformed(evt);
+            }
+        });
+
+        Btn_Next2.setText("Next");
+        Btn_Next2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Next2ActionPerformed(evt);
+            }
+        });
+
+        Btn_Last2.setText("Last");
+        Btn_Last2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Last2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -517,7 +627,7 @@ public class ControlWindow extends javax.swing.JFrame {
                                     .addComponent(txt_rating)
                                     .addComponent(txt_age))))
                         .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -556,37 +666,83 @@ public class ControlWindow extends javax.swing.JFrame {
                                                 .addComponent(Btn_Update1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(Btn_Delete1))
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(Btn_Add, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(Btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(29, 29, 29))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGap(16, 16, 16)
-                                                    .addComponent(jLabel13))
-                                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
-                                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_nameboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_idboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_costboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_statusboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(9, 9, 9)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel16)
+                                                    .addComponent(jLabel14)
+                                                    .addComponent(jLabel13)
+                                                    .addComponent(jLabel15))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txt_nameboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_idboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_costboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_statusboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel17)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txt_cheesesboard, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                            .addGap(77, 77, 77)
+                                                            .addComponent(jLabel22))
+                                                        .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                        .addGap(61, 61, 61)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txt_nameboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_idboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_costboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_statusboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txt_cheesesboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(92, 92, 92)
                                         .addComponent(Btn_First1)
                                         .addGap(18, 18, 18)
                                         .addComponent(Btn_Previous1)
                                         .addGap(18, 18, 18)
                                         .addComponent(Btn_Next1)
                                         .addGap(18, 18, 18)
-                                        .addComponent(Btn_Last1)))))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                                        .addComponent(Btn_Last1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(65, 65, 65)
+                                                .addComponent(Btn_Update2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(Btn_Delete2))
+                                            .addComponent(Btn_Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(72, 72, 72)
+                                        .addComponent(Btn_First2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Btn_Previous2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Btn_Next2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Btn_Last2)
+                                        .addGap(49, 49, 49)))))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -651,37 +807,68 @@ public class ControlWindow extends javax.swing.JFrame {
                     .addComponent(Btn_First)
                     .addComponent(Btn_Previous)
                     .addComponent(Btn_Last))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_idboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_nameboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_costboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txt_statusboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel16))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txt_cheesesboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel17))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_idboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_idboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nameboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nameboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_costboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_costboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_statusboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addGap(37, 37, 37)))
+                            .addComponent(txt_statusboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_cheesesboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btn_Add)
                     .addComponent(Btn_Update1)
                     .addComponent(Btn_Delete1)
+                    .addComponent(Btn_Next1)
+                    .addComponent(Btn_First1)
+                    .addComponent(Btn_Previous1)
+                    .addComponent(Btn_Last1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Btn_Next1)
-                        .addComponent(Btn_First1)
-                        .addComponent(Btn_Previous1)
-                        .addComponent(Btn_Last1)))
+                        .addComponent(Btn_Add1)
+                        .addComponent(Btn_Update2)
+                        .addComponent(Btn_Delete2)
+                        .addComponent(Btn_Next2)
+                        .addComponent(Btn_First2)
+                        .addComponent(Btn_Previous2)
+                        .addComponent(Btn_Last2)))
                 .addContainerGap())
         );
 
@@ -689,7 +876,9 @@ public class ControlWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -699,288 +888,13 @@ public class ControlWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Btn_InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InsertActionPerformed
+    private void txt_nameboard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameboard1ActionPerformed
         // TODO add your handling code here:
-     if(checkInputs() != false)
-     {
-         try {
-             Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement("INSERT INTO cheese(name,price,style,supplier,origin,milk,age,strength,rating,stock,info)"
-                     + "values(?,?,?,?,?,?,?,?,?,?,?)");
-           ps.setString(1, txt_name.getText());
-           ps.setString(2, txt_price.getText());
-           ps.setString(3, txt_style.getText());
-           ps.setString(4, txt_supplier.getText());
-           ps.setString(5, txt_origin.getText());
-           ps.setString(6, txt_milk.getText());
-           ps.setString(7, txt_age.getText());
-           ps.setString(8, txt_strength.getText());
-           ps.setString(9, txt_rating.getText());
-           ps.setString(10, txt_stock.getText());
-           ps.setString(11, txt_info.getText());
-           
-           ps.executeUpdate();
-           Show_cheeseList_in_JTable();
-           
-              } 
-         catch (SQLException ex) 
-         {
-              JOptionPane.showMessageDialog(null, ex.getMessage());
-         }
-     }
-     else
-     {
-         JOptionPane.showMessageDialog(null, "one or more fields empty!"); 
-     }
-     System.out.println("name = " + txt_name.getText());
-     System.out.println("price = " + txt_price.getText());
-    }//GEN-LAST:event_Btn_InsertActionPerformed
+    }//GEN-LAST:event_txt_nameboard1ActionPerformed
 
-    private void Btn_PreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PreviousActionPerformed
+    private void txt_costboard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_costboard1ActionPerformed
         // TODO add your handling code here:
-        pos--;
-        
-        if(pos < 0)
-        {
-            pos = 0;
-        }
-        
-        ShowItem(pos);
-    }//GEN-LAST:event_Btn_PreviousActionPerformed
-
-    private void Btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_UpdateActionPerformed
-        // TODO add your handling code here:
-      if(checkInputs() && txt_id.getText() != null ) 
-      {
-          System.out.println("name = " + txt_name.getText()); //debug
-          System.out.println("price = " + txt_price.getText()); //debug
-          System.out.println("id = " + txt_id.getText()); //debug
-          
-          String UpdateQuery = null;
-          PreparedStatement ps = null;
-          Connection con = getConnection();
-          
-          try
-          {
-            UpdateQuery = "UPDATE cheese SET name = ?, price = ?, style = ?, supplier = ?, origin = ?, milk = ?, age = ?, strength = ?, rating = ?, stock = ?, info = ? WHERE id = ?";
-            ps = con.prepareStatement(UpdateQuery);
-            
-             ps.setString(1, txt_name.getText());
-             ps.setString(2, txt_price.getText());
-             ps.setString(3, txt_style.getText());
-             ps.setString(4, txt_supplier.getText());
-             ps.setString(5, txt_origin.getText());
-             ps.setString(6, txt_milk.getText());
-             ps.setString(7, txt_age.getText());
-             ps.setString(8, txt_strength.getText());
-             ps.setString(9, txt_rating.getText());
-             ps.setString(10,txt_stock.getText());
-             ps.setString(11,txt_info.getText());
-              
-             ps.setInt(12, Integer.parseInt(txt_id.getText()));
-             
-             ps.executeUpdate();
-             Show_cheeseList_in_JTable();
-             JOptionPane.showMessageDialog(null, "cheese Updated");
-          } 
-          catch (SQLException ex) 
-          {
-              Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
-          }
-          
-      }
-      
-      else
-      {
-          JOptionPane.showMessageDialog(null, "field empty or wrong!");
-      }
-        
-          System.out.println("name = " + txt_name.getText()); //debug
-          System.out.println("price = " + txt_price.getText()); //debug
-          System.out.println("id = " + txt_id.getText()); //debug
-    }//GEN-LAST:event_Btn_UpdateActionPerformed
-
-    private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
-        // TODO add your handling code here:
-       if(!txt_id.getText().equals(""))
-       {      
-           try {
-               Connection con = getConnection();
-               PreparedStatement ps = con.prepareStatement("DELETE FROM cheese WHERE id = ?");
-               int id = Integer.parseInt(txt_id.getText()); 
-               ps.setInt(1, id);
-               ps.executeUpdate();
-               Show_cheeseList_in_JTable(); //refresh the jtable
-               JOptionPane.showMessageDialog(null, "Cheese Deleted");
-               } 
-           
-           catch (SQLException ex) 
-               {
-               Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
-               JOptionPane.showMessageDialog(null, "Cheese Could Not Be Deleted");
-               }       
-       } 
-       else
-       {
-           JOptionPane.showMessageDialog(null, "Enter Cheese ID to Delete the Cheese"); //cant delete somthing that doesnt have an id
-       }    
-    }//GEN-LAST:event_Btn_DeleteActionPerformed
-
-    private void JTable_cheeseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable_cheeseMouseClicked
-        // TODO add your handling code here:
-        int index = JTable_cheese.getSelectedRow();
-        ShowItem(index);
-        
-    }//GEN-LAST:event_JTable_cheeseMouseClicked
-
-    private void Btn_FirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_FirstActionPerformed
-        // TODO add your handling code here:
-        pos = 0;
-        ShowItem(pos);
-        
-    }//GEN-LAST:event_Btn_FirstActionPerformed
-
-    private void Btn_LastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LastActionPerformed
-        // TODO add your handling code here:
-        pos = getCheeseList().size()-1;
-        ShowItem(pos);
-    }//GEN-LAST:event_Btn_LastActionPerformed
-
-    private void Btn_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NextActionPerformed
-        // TODO add your handling code here:
-       pos++;
-       
-       if(pos >= getCheeseList().size())
-       {
-            pos = getCheeseList().size()-1;
-       }
-       ShowItem(pos);      
-    }//GEN-LAST:event_Btn_NextActionPerformed
-
-    private void txt_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nameActionPerformed
-
-    private void txt_originActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_originActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_originActionPerformed
-
-    private void txt_priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_priceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_priceActionPerformed
-
-    private void txt_costboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_costboardActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_costboardActionPerformed
-
-    private void txt_nameboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameboardActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nameboardActionPerformed
-
-    private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
-    //cheaseboard
-    try {
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO cheeseboard(name,cost,status)"  //"cheeseboard in this instance is the table name
-                         + "values(?,?,?)");
-            ps.setString(1, txt_nameboard.getText());
-            ps.setString(2, txt_costboard.getText());
-            ps.setString(3, txt_statusboard.getText());
-
-            ps.executeUpdate();
-            Show_boardList_in_JTable();
-
-        } 
-    catch (SQLException ex) 
-        {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-   // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_AddActionPerformed
-
-    private void Btn_Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Update1ActionPerformed
-      //cheeseboard  // TODO add your handling code here:
-          String UpdateQuery = null;
-          PreparedStatement ps = null;
-          Connection con = getConnection();
-          
-          try
-          {
-            UpdateQuery = "UPDATE cheeseboard SET name = ?, cost = ?, status = ? WHERE id = ?";
-            ps = con.prepareStatement(UpdateQuery);
-            
-             ps.setString(1, txt_nameboard.getText());
-             ps.setString(2, txt_costboard.getText());
-             ps.setString(3, txt_statusboard.getText()); 
-             ps.setInt(4, Integer.parseInt(txt_idboard.getText()));
-             
-             ps.executeUpdate();
-             Show_boardList_in_JTable();
-             JOptionPane.showMessageDialog(null, "cheeseboard Updated");
-          } 
-          catch (SQLException ex) 
-          {
-              Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
-          }
-    }//GEN-LAST:event_Btn_Update1ActionPerformed
-
-    private void Btn_Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Delete1ActionPerformed
-    //cheeseboard    // TODO add your handling code here:
-    if(!txt_idboard.getText().equals(""))
-       {      
-           try {
-               Connection con = getConnection();
-               PreparedStatement ps = con.prepareStatement("DELETE FROM cheeseboard WHERE id = ?");
-               int id = Integer.parseInt(txt_idboard.getText()); 
-               ps.setInt(1, id);
-               ps.executeUpdate();
-               Show_boardList_in_JTable(); //refresh the jtable
-               JOptionPane.showMessageDialog(null, "Cheeseboard Deleted");
-               } 
-           
-           catch (SQLException ex) 
-               {
-               Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
-               JOptionPane.showMessageDialog(null, "Cheeseboard Could Not Be Deleted");
-               }       
-       } 
-       else
-       {
-           JOptionPane.showMessageDialog(null, "Enter Cheeseboard ID to Delete the Cheeseboard"); //cant delete somthing that doesnt have an id
-       }
-    
-    }//GEN-LAST:event_Btn_Delete1ActionPerformed
-
-    private void Btn_First1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_First1ActionPerformed
-        // TODO add your handling code here:
-        //cheeseboard
-        pos1 = 0;
-        ShowBoardItem(pos1);
-    }//GEN-LAST:event_Btn_First1ActionPerformed
-
-    private void Btn_Previous1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Previous1ActionPerformed
-        // TODO add your handling code here:
-        //cheseeboard
-        pos1--;
-        
-        if(pos1 < 0)
-        {
-            pos1 = 0;
-        }      
-        ShowBoardItem(pos1);
-    }//GEN-LAST:event_Btn_Previous1ActionPerformed
-
-    private void Btn_Next1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Next1ActionPerformed
-        // TODO add your handling code here:
-       //cheeseboard 
-       pos1++;
-       
-       if(pos1 >= getcheeseBoardList().size())
-       {
-            pos1 = getcheeseBoardList().size()-1;
-       }
-       ShowBoardItem(pos1);
-    }//GEN-LAST:event_Btn_Next1ActionPerformed
+    }//GEN-LAST:event_txt_costboard1ActionPerformed
 
     private void Btn_Last1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Last1ActionPerformed
         // TODO add your handling code here:
@@ -989,12 +903,329 @@ public class ControlWindow extends javax.swing.JFrame {
         ShowBoardItem(pos1);
     }//GEN-LAST:event_Btn_Last1ActionPerformed
 
+    private void Btn_Next1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Next1ActionPerformed
+        // TODO add your handling code here:
+        //cheeseboard
+        pos1++;
+
+        if(pos1 >= getcheeseBoardList().size())
+        {
+            pos1 = getcheeseBoardList().size()-1;
+        }
+        ShowBoardItem(pos1);
+    }//GEN-LAST:event_Btn_Next1ActionPerformed
+
+    private void Btn_Previous1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Previous1ActionPerformed
+        // TODO add your handling code here:
+        //cheseeboard
+        pos1--;
+
+        if(pos1 < 0)
+        {
+            pos1 = 0;
+        }
+        ShowBoardItem(pos1);
+    }//GEN-LAST:event_Btn_Previous1ActionPerformed
+
+    private void Btn_First1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_First1ActionPerformed
+        // TODO add your handling code here:
+        //cheeseboard
+        pos1 = 0;
+        ShowBoardItem(pos1);
+    }//GEN-LAST:event_Btn_First1ActionPerformed
+
     private void JTable_cheeseboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable_cheeseboardMouseClicked
         // TODO add your handling code here:
         //cheeseboard
         int index = JTable_cheeseboard.getSelectedRow();
         ShowBoardItem(index);
     }//GEN-LAST:event_JTable_cheeseboardMouseClicked
+
+    private void Btn_Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Delete1ActionPerformed
+        //cheeseboard    // TODO add your handling code here:
+        if(!txt_idboard.getText().equals(""))
+        {
+            try {
+                Connection con = getConnection();
+                PreparedStatement ps = con.prepareStatement("DELETE FROM cheeseboard WHERE id = ?");
+                int id = Integer.parseInt(txt_idboard.getText());
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                Show_boardList_in_JTable(); //refresh the jtable
+                JOptionPane.showMessageDialog(null, "Cheeseboard Deleted");
+            }
+
+            catch (SQLException ex)
+            {
+                Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Cheeseboard Could Not Be Deleted");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Enter Cheeseboard ID to Delete the Cheeseboard"); //cant delete somthing that doesnt have an id
+        }
+
+    }//GEN-LAST:event_Btn_Delete1ActionPerformed
+
+    private void Btn_Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Update1ActionPerformed
+        //cheeseboard  // TODO add your handling code here:
+        String UpdateQuery = null;
+        PreparedStatement ps = null;
+        Connection con = getConnection();
+
+        try
+        {
+            UpdateQuery = "UPDATE cheeseboard SET name = ?, cost = ?, status = ?, cheeses = ? WHERE id = ?";
+            ps = con.prepareStatement(UpdateQuery);
+
+            ps.setString(1, txt_nameboard.getText());
+            ps.setString(2, txt_costboard.getText());
+            ps.setString(3, txt_statusboard.getText());
+            ps.setString(4, txt_cheesesboard.getText());
+            ps.setInt(5, Integer.parseInt(txt_idboard.getText()));
+
+            ps.executeUpdate();
+            Show_boardList_in_JTable();
+            JOptionPane.showMessageDialog(null, "cheeseboard Updated");
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Btn_Update1ActionPerformed
+
+    private void Btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AddActionPerformed
+        //cheaseboard
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO cheeseboard(name,cost,status,cheeses)"  //"cheeseboard in this instance is the table name
+                + "values(?,?,?,?)");
+            ps.setString(1, txt_nameboard.getText());
+            ps.setString(2, txt_costboard.getText());
+            ps.setString(3, txt_statusboard.getText());
+            ps.setString(4, txt_cheesesboard.getText());
+
+            ps.executeUpdate();
+            Show_boardList_in_JTable();
+
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_AddActionPerformed
+
+    private void txt_nameboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameboardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nameboardActionPerformed
+
+    private void txt_costboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_costboardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_costboardActionPerformed
+
+    private void txt_originActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_originActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_originActionPerformed
+
+    private void Btn_LastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LastActionPerformed
+        // TODO add your handling code here:
+        pos = getCheeseList().size()-1;
+        ShowItem(pos);
+    }//GEN-LAST:event_Btn_LastActionPerformed
+
+    private void Btn_PreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PreviousActionPerformed
+        // TODO add your handling code here:
+        pos--;
+
+        if(pos < 0)
+        {
+            pos = 0;
+        }
+
+        ShowItem(pos);
+    }//GEN-LAST:event_Btn_PreviousActionPerformed
+
+    private void Btn_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NextActionPerformed
+        // TODO add your handling code here:
+        pos++;
+
+        if(pos >= getCheeseList().size())
+        {
+            pos = getCheeseList().size()-1;
+        }
+        ShowItem(pos);
+    }//GEN-LAST:event_Btn_NextActionPerformed
+
+    private void Btn_FirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_FirstActionPerformed
+        // TODO add your handling code here:
+        pos = 0;
+        ShowItem(pos);
+
+    }//GEN-LAST:event_Btn_FirstActionPerformed
+
+    private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
+        // TODO add your handling code here:
+        if(!txt_id.getText().equals(""))
+        {
+            try {
+                Connection con = getConnection();
+                PreparedStatement ps = con.prepareStatement("DELETE FROM cheese WHERE id = ?");
+                int id = Integer.parseInt(txt_id.getText());
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                Show_cheeseList_in_JTable(); //refresh the jtable
+                JOptionPane.showMessageDialog(null, "Cheese Deleted");
+            }
+
+            catch (SQLException ex)
+            {
+                Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Cheese Could Not Be Deleted");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Enter Cheese ID to Delete the Cheese"); //cant delete somthing that doesnt have an id
+        }
+    }//GEN-LAST:event_Btn_DeleteActionPerformed
+
+    private void Btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_UpdateActionPerformed
+        // TODO add your handling code here:
+        if(checkInputs() && txt_id.getText() != null )
+        {
+            System.out.println("name = " + txt_name.getText()); //debug
+            System.out.println("price = " + txt_price.getText()); //debug
+            System.out.println("id = " + txt_id.getText()); //debug
+
+            String UpdateQuery = null;
+            PreparedStatement ps = null;
+            Connection con = getConnection();
+
+            try
+            {
+                UpdateQuery = "UPDATE cheese SET name = ?, price = ?, style = ?, supplier = ?, origin = ?, milk = ?, age = ?, strength = ?, rating = ?, stock = ?, info = ? WHERE id = ?";
+                ps = con.prepareStatement(UpdateQuery);
+
+                ps.setString(1, txt_name.getText());
+                ps.setString(2, txt_price.getText());
+                ps.setString(3, txt_style.getText());
+                ps.setString(4, txt_supplier.getText());
+                ps.setString(5, txt_origin.getText());
+                ps.setString(6, txt_milk.getText());
+                ps.setString(7, txt_age.getText());
+                ps.setString(8, txt_strength.getText());
+                ps.setString(9, txt_rating.getText());
+                ps.setString(10,txt_stock.getText());
+                ps.setString(11,txt_info.getText());
+
+                ps.setInt(12, Integer.parseInt(txt_id.getText()));
+
+                ps.executeUpdate();
+                Show_cheeseList_in_JTable();
+                JOptionPane.showMessageDialog(null, "cheese Updated");
+            }
+            catch (SQLException ex)
+            {
+                Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+        else
+        {
+            JOptionPane.showMessageDialog(null, "field empty or wrong!");
+        }
+
+        System.out.println("name = " + txt_name.getText()); //debug
+        System.out.println("price = " + txt_price.getText()); //debug
+        System.out.println("id = " + txt_id.getText()); //debug
+    }//GEN-LAST:event_Btn_UpdateActionPerformed
+
+    private void Btn_InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InsertActionPerformed
+        // TODO add your handling code here:
+        if(checkInputs() != false)
+        {
+            try {
+                Connection con = getConnection();
+                PreparedStatement ps = con.prepareStatement("INSERT INTO cheese(name,price,style,supplier,origin,milk,age,strength,rating,stock,info)"
+                    + "values(?,?,?,?,?,?,?,?,?,?,?)");
+                ps.setString(1, txt_name.getText());
+                ps.setString(2, txt_price.getText());
+                ps.setString(3, txt_style.getText());
+                ps.setString(4, txt_supplier.getText());
+                ps.setString(5, txt_origin.getText());
+                ps.setString(6, txt_milk.getText());
+                ps.setString(7, txt_age.getText());
+                ps.setString(8, txt_strength.getText());
+                ps.setString(9, txt_rating.getText());
+                ps.setString(10, txt_stock.getText());
+                ps.setString(11, txt_info.getText());
+
+                ps.executeUpdate();
+                Show_cheeseList_in_JTable();
+
+            }
+            catch (SQLException ex)
+            {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "one or more fields empty!");
+        }
+        System.out.println("name = " + txt_name.getText());
+        System.out.println("price = " + txt_price.getText());
+    }//GEN-LAST:event_Btn_InsertActionPerformed
+
+    private void JTable_cheeseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable_cheeseMouseClicked
+        // TODO add your handling code here:
+        int index = JTable_cheese.getSelectedRow();
+        ShowItem(index);
+
+    }//GEN-LAST:event_JTable_cheeseMouseClicked
+
+    private void txt_priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_priceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_priceActionPerformed
+
+    private void txt_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nameActionPerformed
+
+    private void JTable_linktableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable_linktableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTable_linktableMouseClicked
+
+    private void Btn_Add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Add1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Add1ActionPerformed
+
+    private void Btn_Update2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Update2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Update2ActionPerformed
+
+    private void Btn_Delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Delete2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Delete2ActionPerformed
+
+    private void Btn_First2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_First2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_First2ActionPerformed
+
+    private void Btn_Previous2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Previous2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Previous2ActionPerformed
+
+    private void Btn_Next2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Next2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Next2ActionPerformed
+
+    private void Btn_Last2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Last2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_Last2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1033,21 +1264,29 @@ public class ControlWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Add;
+    private javax.swing.JButton Btn_Add1;
     private javax.swing.JButton Btn_Delete;
     private javax.swing.JButton Btn_Delete1;
+    private javax.swing.JButton Btn_Delete2;
     private javax.swing.JButton Btn_First;
     private javax.swing.JButton Btn_First1;
+    private javax.swing.JButton Btn_First2;
     private javax.swing.JButton Btn_Insert;
     private javax.swing.JButton Btn_Last;
     private javax.swing.JButton Btn_Last1;
+    private javax.swing.JButton Btn_Last2;
     private javax.swing.JButton Btn_Next;
     private javax.swing.JButton Btn_Next1;
+    private javax.swing.JButton Btn_Next2;
     private javax.swing.JButton Btn_Previous;
     private javax.swing.JButton Btn_Previous1;
+    private javax.swing.JButton Btn_Previous2;
     private javax.swing.JButton Btn_Update;
     private javax.swing.JButton Btn_Update1;
+    private javax.swing.JButton Btn_Update2;
     private javax.swing.JTable JTable_cheese;
     private javax.swing.JTable JTable_cheeseboard;
+    private javax.swing.JTable JTable_linktable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1056,7 +1295,13 @@ public class ControlWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1067,18 +1312,25 @@ public class ControlWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField txt_age;
+    private javax.swing.JTextField txt_cheesesboard;
+    private javax.swing.JTextField txt_cheesesboard1;
     private javax.swing.JTextField txt_costboard;
+    private javax.swing.JTextField txt_costboard1;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_idboard;
+    private javax.swing.JTextField txt_idboard1;
     private javax.swing.JTextField txt_info;
     private javax.swing.JTextField txt_milk;
     private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_nameboard;
+    private javax.swing.JTextField txt_nameboard1;
     private javax.swing.JTextField txt_origin;
     private javax.swing.JTextField txt_price;
     private javax.swing.JTextField txt_rating;
     private javax.swing.JTextField txt_statusboard;
+    private javax.swing.JTextField txt_statusboard1;
     private javax.swing.JTextField txt_stock;
     private javax.swing.JTextField txt_strength;
     private javax.swing.JTextField txt_style;
