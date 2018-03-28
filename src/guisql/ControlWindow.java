@@ -1312,6 +1312,29 @@ public class ControlWindow extends javax.swing.JFrame {
 
     private void Btn_Delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Delete2ActionPerformed
         // TODO add your handling code here:
+        //linktable
+        if(!txt_rowid.getText().equals(""))
+        {
+            try {
+                Connection con = getConnection();
+                PreparedStatement ps = con.prepareStatement("DELETE FROM cheeseboardrow WHERE rowid = ?");
+                int id = Integer.parseInt(txt_rowid.getText());
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                Show_linkList_in_JTable(); //refresh the jtable
+                JOptionPane.showMessageDialog(null, "cheseeboard/cheese Link Deleted");
+            }
+
+            catch (SQLException ex)
+            {
+                Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "cheseeboard/cheese Link Could Not Be Deleted");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Enter Row ID to Delete the cheseeboard/cheese Link"); //cant delete somthing that doesnt have an id
+        }
     }//GEN-LAST:event_Btn_Delete2ActionPerformed
 
     private void Btn_First2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_First2ActionPerformed
