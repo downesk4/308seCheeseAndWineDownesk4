@@ -18,13 +18,15 @@ public class cheeseboardmain {
     private String boardname;
     private float boardcost;
     private String boardstatus;
+    private String boardcheeses;
     
-    public cheeseboardmain(int pboardid, String pboardname, float pboardcost, String pboardstatus)
+    public cheeseboardmain(int pboardid, String pboardname, float pboardcost, String pboardstatus, String pboardcheeses)
     {
         this.boardid = pboardid;
         this.boardname = pboardname;
         this.boardcost = pboardcost;
         this.boardstatus = pboardstatus;
+        this.boardcheeses = pboardcheeses;
     }    
   
     
@@ -46,5 +48,10 @@ public class cheeseboardmain {
     public String getBoardstatus()
     {
         return boardstatus;
+    }
+    
+    public String getBoardcheeses()
+    {
+        return boardcheeses;
     }
 }
