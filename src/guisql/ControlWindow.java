@@ -36,8 +36,9 @@ public class ControlWindow extends javax.swing.JFrame {
         Show_linkList_in_JTable();
     }
 
-    int pos = 0;
-    int pos1 = 0;
+    int pos = 0;  //cheese
+    int pos1 = 0; //cheeseboard
+    int pos2 = 0; //linktable
     
     
      
@@ -1339,18 +1340,41 @@ public class ControlWindow extends javax.swing.JFrame {
 
     private void Btn_First2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_First2ActionPerformed
         // TODO add your handling code here:
+        //linktable
+        pos2 = 0;
+        ShowLinkItem(pos1);
     }//GEN-LAST:event_Btn_First2ActionPerformed
 
     private void Btn_Previous2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Previous2ActionPerformed
         // TODO add your handling code here:
+        //linktable
+        pos2--;
+
+        if(pos2 < 0)
+        {
+            pos2 = 0;
+        }
+
+        ShowLinkItem(pos2);
     }//GEN-LAST:event_Btn_Previous2ActionPerformed
 
     private void Btn_Next2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Next2ActionPerformed
         // TODO add your handling code here:
+        //linktable
+        pos2++;
+
+        if(pos2 >= getTableList().size())
+        {
+            pos2 = getTableList().size()-1;
+        }
+        ShowLinkItem(pos2);
     }//GEN-LAST:event_Btn_Next2ActionPerformed
 
     private void Btn_Last2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Last2ActionPerformed
         // TODO add your handling code here:
+        //linktable
+        pos2 = getTableList().size()-1;
+        ShowLinkItem(pos);
     }//GEN-LAST:event_Btn_Last2ActionPerformed
 
     /**
