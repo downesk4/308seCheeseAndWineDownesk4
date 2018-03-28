@@ -33,6 +33,7 @@ public class ControlWindow extends javax.swing.JFrame {
         initComponents();
         Show_cheeseList_in_JTable();
         Show_boardList_in_JTable();
+        Show_linkList_in_JTable();
     }
 
     int pos = 0;
@@ -40,7 +41,7 @@ public class ControlWindow extends javax.swing.JFrame {
     
     
      
-    public Connection getConnection()  //cheese
+    public Connection getConnection()  //cheese is the database not the table - put in class
     {
         Connection con = null;
         
@@ -82,6 +83,55 @@ public class ControlWindow extends javax.swing.JFrame {
     
     
     //fill array with data
+    public ArrayList<linktablemain> getTableList() //linktable
+    {
+            ArrayList<linktablemain> linkList = new ArrayList<linktablemain>();
+            Connection con = getConnection();
+            String query = "SELECT * FROM cheeseboardrow";
+            
+            Statement state;
+            ResultSet result;
+        try {
+            
+            state = con.createStatement();
+            result = state.executeQuery(query);
+            linktablemain cheeseboardrow; 
+            
+            while(result.next())
+               {
+                cheeseboardrow = new linktablemain(result.getInt("rowid"),result.getInt("boardid"),result.getInt("cheeseid"),result.getInt("quantity"),Float.parseFloat(result.getString("cost")));                
+                linkList.add(cheeseboardrow);                
+               }
+            
+            } 
+        catch (SQLException ex) 
+            {
+            Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        return linkList;
+    }
+    
+    public void Show_linkList_in_JTable()  //linktable
+    {
+        
+        ArrayList<linktablemain> list = getTableList();
+        DefaultTableModel model = (DefaultTableModel)JTable_linktable.getModel();
+        
+        
+        model.setRowCount(0);  //clear JTable
+        Object[] row = new Object[5];
+        for(int i = 0; i < list.size(); i++)
+        {
+           row[0] = list.get(i).getRowid(); 
+           row[1] = list.get(i).getRowboardid(); 
+           row[2] = list.get(i).getRowcheeseid();  
+           row[3] = list.get(i).getRowquantitys();  
+           row[4] = list.get(i).getRowcost();
+           model.addRow(row);
+        }
+    }
+    
     
     public ArrayList<cheeseboardmain> getcheeseBoardList() //cheesesboad
     {
@@ -118,19 +168,19 @@ public class ControlWindow extends javax.swing.JFrame {
     public void Show_boardList_in_JTable()  //cheeseboard
     {
         
-        ArrayList<cheeseboardmain> list1 = getcheeseBoardList();
+        ArrayList<cheeseboardmain> list = getcheeseBoardList();
         DefaultTableModel model = (DefaultTableModel)JTable_cheeseboard.getModel();
         
         
         model.setRowCount(0);  //clear JTable
         Object[] row = new Object[5];
-        for(int i = 0; i < list1.size(); i++)
+        for(int i = 0; i < list.size(); i++)
         {
-           row[0] = list1.get(i).getBoardid(); 
-           row[1] = list1.get(i).getBoardname(); 
-           row[2] = list1.get(i).getBoardcost();  
-           row[3] = list1.get(i).getBoardstatus();  
-           row[4] = list1.get(i).getBoardcheeses();
+           row[0] = list.get(i).getBoardid(); 
+           row[1] = list.get(i).getBoardname(); 
+           row[2] = list.get(i).getBoardcost();  
+           row[3] = list.get(i).getBoardstatus();  
+           row[4] = list.get(i).getBoardcheeses();
            model.addRow(row);
         }
     }
@@ -853,14 +903,7 @@ public class ControlWindow extends javax.swing.JFrame {
                             .addComponent(jLabel18)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_Add)
-                    .addComponent(Btn_Update1)
-                    .addComponent(Btn_Delete1)
-                    .addComponent(Btn_Next1)
-                    .addComponent(Btn_First1)
-                    .addComponent(Btn_Previous1)
-                    .addComponent(Btn_Last1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Btn_Add1)
                         .addComponent(Btn_Update2)
@@ -868,7 +911,15 @@ public class ControlWindow extends javax.swing.JFrame {
                         .addComponent(Btn_Next2)
                         .addComponent(Btn_First2)
                         .addComponent(Btn_Previous2)
-                        .addComponent(Btn_Last2)))
+                        .addComponent(Btn_Last2))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Btn_Add)
+                        .addComponent(Btn_Update1)
+                        .addComponent(Btn_Delete1)
+                        .addComponent(Btn_Next1)
+                        .addComponent(Btn_First1)
+                        .addComponent(Btn_Previous1)
+                        .addComponent(Btn_Last1)))
                 .addContainerGap())
         );
 

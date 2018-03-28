@@ -383,15 +383,8 @@
                       <Component id="jScrollPane3" min="-2" pref="152" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Btn_Add" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Btn_Update1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Btn_Delete1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Btn_Next1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Btn_First1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Btn_Previous1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Btn_Last1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="Btn_Add1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Btn_Update2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Btn_Delete2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -399,6 +392,15 @@
                           <Component id="Btn_First2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Btn_Previous2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Btn_Last2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Btn_Add" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Btn_Update1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Btn_Delete1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Btn_Next1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Btn_First1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Btn_Previous1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Btn_Last1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
