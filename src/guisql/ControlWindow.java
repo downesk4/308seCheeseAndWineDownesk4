@@ -1284,6 +1284,30 @@ public class ControlWindow extends javax.swing.JFrame {
 
     private void Btn_Update2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Update2ActionPerformed
         // TODO add your handling code here:
+        //linktable
+        String UpdateQuery = null;
+        PreparedStatement ps = null;
+        Connection con = getConnection();
+
+        try
+        {
+            UpdateQuery = "UPDATE cheeseboardrow SET boardid = ?, cheeseid = ?, quantity = ?, cost = ? WHERE rowid = ?";
+            ps = con.prepareStatement(UpdateQuery);
+
+            ps.setString(1, txt_boardid.getText());
+            ps.setString(2, txt_cheeseid.getText());
+            ps.setString(3, txt_quantity.getText());
+            ps.setString(4, txt_rowcost.getText());
+            ps.setInt(5, Integer.parseInt(txt_rowid.getText()));
+
+            ps.executeUpdate();
+            Show_linkList_in_JTable();
+            JOptionPane.showMessageDialog(null, "cheeseboardrow Updated");
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(ControlWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Btn_Update2ActionPerformed
 
     private void Btn_Delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Delete2ActionPerformed
