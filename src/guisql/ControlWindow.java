@@ -272,7 +272,14 @@ public class ControlWindow extends javax.swing.JFrame {
         txt_cheesesboard.setText(getcheeseBoardList().get(index).getBoardcheeses());
     }
     
-    
+    public void ShowLinkItem(int index) //linktable -- need to put in a class
+    {
+        txt_rowid.setText(Integer.toString(getTableList().get(index).getRowid()));
+        txt_boardid.setText(Integer.toString(getTableList().get(index).getRowboardid()));
+        txt_cheeseid.setText(Integer.toString(getTableList().get(index).getRowcheeseid()));
+        txt_quantity.setText(Integer.toString(getTableList().get(index).getRowquantitys()));
+        txt_rowcost.setText(Float.toString(getTableList().get(index).getRowcost()));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -335,15 +342,15 @@ public class ControlWindow extends javax.swing.JFrame {
         Btn_Last1 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         txt_cheesesboard = new javax.swing.JTextField();
-        txt_cheesesboard1 = new javax.swing.JTextField();
+        txt_rowcost = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        txt_statusboard1 = new javax.swing.JTextField();
-        txt_costboard1 = new javax.swing.JTextField();
+        txt_quantity = new javax.swing.JTextField();
+        txt_cheeseid = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        txt_nameboard1 = new javax.swing.JTextField();
-        txt_idboard1 = new javax.swing.JTextField();
+        txt_boardid = new javax.swing.JTextField();
+        txt_rowid = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         JTable_linktable = new javax.swing.JTable();
@@ -555,9 +562,9 @@ public class ControlWindow extends javax.swing.JFrame {
 
         jLabel19.setText("Quantity:");
 
-        txt_costboard1.addActionListener(new java.awt.event.ActionListener() {
+        txt_cheeseid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_costboard1ActionPerformed(evt);
+                txt_cheeseidActionPerformed(evt);
             }
         });
 
@@ -565,9 +572,9 @@ public class ControlWindow extends javax.swing.JFrame {
 
         jLabel21.setText("BoardID:");
 
-        txt_nameboard1.addActionListener(new java.awt.event.ActionListener() {
+        txt_boardid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nameboard1ActionPerformed(evt);
+                txt_boardidActionPerformed(evt);
             }
         });
 
@@ -756,14 +763,14 @@ public class ControlWindow extends javax.swing.JFrame {
                                                             .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txt_nameboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txt_idboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txt_costboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txt_statusboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(txt_boardid, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_rowid, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_cheeseid, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txt_cheesesboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(txt_rowcost, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(31, 31, 31)
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -884,22 +891,22 @@ public class ControlWindow extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_idboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_rowid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nameboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_boardid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_costboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_cheeseid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_statusboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_cheesesboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_rowcost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
@@ -939,13 +946,13 @@ public class ControlWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_nameboard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameboard1ActionPerformed
+    private void txt_boardidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_boardidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nameboard1ActionPerformed
+    }//GEN-LAST:event_txt_boardidActionPerformed
 
-    private void txt_costboard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_costboard1ActionPerformed
+    private void txt_cheeseidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cheeseidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_costboard1ActionPerformed
+    }//GEN-LAST:event_txt_cheeseidActionPerformed
 
     private void Btn_Last1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Last1ActionPerformed
         // TODO add your handling code here:
@@ -1365,23 +1372,23 @@ public class ControlWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField txt_age;
+    private javax.swing.JTextField txt_boardid;
+    private javax.swing.JTextField txt_cheeseid;
     private javax.swing.JTextField txt_cheesesboard;
-    private javax.swing.JTextField txt_cheesesboard1;
     private javax.swing.JTextField txt_costboard;
-    private javax.swing.JTextField txt_costboard1;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_idboard;
-    private javax.swing.JTextField txt_idboard1;
     private javax.swing.JTextField txt_info;
     private javax.swing.JTextField txt_milk;
     private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_nameboard;
-    private javax.swing.JTextField txt_nameboard1;
     private javax.swing.JTextField txt_origin;
     private javax.swing.JTextField txt_price;
+    private javax.swing.JTextField txt_quantity;
     private javax.swing.JTextField txt_rating;
+    private javax.swing.JTextField txt_rowcost;
+    private javax.swing.JTextField txt_rowid;
     private javax.swing.JTextField txt_statusboard;
-    private javax.swing.JTextField txt_statusboard1;
     private javax.swing.JTextField txt_stock;
     private javax.swing.JTextField txt_strength;
     private javax.swing.JTextField txt_style;

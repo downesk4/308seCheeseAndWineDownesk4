@@ -192,16 +192,16 @@
                                                   </Group>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txt_nameboard1" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
-                                                      <Component id="txt_idboard1" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
-                                                      <Component id="txt_costboard1" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
-                                                      <Component id="txt_statusboard1" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                                      <Component id="txt_boardid" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                                      <Component id="txt_rowid" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                                      <Component id="txt_cheeseid" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                                      <Component id="txt_quantity" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jLabel18" min="-2" pref="40" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="txt_cheesesboard1" min="-2" pref="148" max="-2" attributes="0"/>
+                                                  <Component id="txt_rowcost" min="-2" pref="148" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -357,26 +357,26 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel22" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="txt_idboard1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_rowid" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel21" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="txt_nameboard1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_boardid" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel20" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="txt_costboard1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_cheeseid" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_statusboard1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_quantity" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_cheesesboard1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_rowcost" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -811,7 +811,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_cheesesboard">
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_cheesesboard1">
+        <Component class="javax.swing.JTextField" name="txt_rowcost">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
@@ -823,11 +823,11 @@
             <Property name="text" type="java.lang.String" value="Quantity:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_statusboard1">
+        <Component class="javax.swing.JTextField" name="txt_quantity">
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_costboard1">
+        <Component class="javax.swing.JTextField" name="txt_cheeseid">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_costboard1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_cheeseidActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
@@ -840,12 +840,12 @@
             <Property name="text" type="java.lang.String" value="BoardID:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_nameboard1">
+        <Component class="javax.swing.JTextField" name="txt_boardid">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nameboard1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_boardidActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_idboard1">
+        <Component class="javax.swing.JTextField" name="txt_rowid">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
