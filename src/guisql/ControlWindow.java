@@ -689,32 +689,6 @@ public class ControlWindow extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Btn_Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Update)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Delete)
-                                .addGap(200, 200, 200)
-                                .addComponent(Btn_First)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Previous)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Next)
-                                .addGap(18, 18, 18)
-                                .addComponent(Btn_Last))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(17, 17, 17)
-                                        .addComponent(jLabel1))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_price, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_style, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,7 +772,36 @@ public class ControlWindow extends javax.swing.JFrame {
                                         .addComponent(Btn_Next2)
                                         .addGap(18, 18, 18)
                                         .addComponent(Btn_Last2)
-                                        .addGap(49, 49, 49)))))))
+                                        .addGap(49, 49, 49))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(17, 17, 17)
+                                                .addComponent(jLabel1))
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_price, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_style, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Btn_Insert, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Btn_Update)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Btn_Delete)
+                                        .addGap(441, 441, 441)
+                                        .addComponent(Btn_First)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Btn_Previous)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Btn_Next)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Btn_Last)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1259,6 +1262,24 @@ public class ControlWindow extends javax.swing.JFrame {
 
     private void Btn_Add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Add1ActionPerformed
         // TODO add your handling code here:
+        //linkttable
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO cheeseboardrow(boardid,cheeseid,quantity,cost)"  //"cheeseboard in this instance is the table name
+                + "values(?,?,?,?)");
+            ps.setString(1, txt_boardid.getText());
+            ps.setString(2, txt_cheeseid.getText());
+            ps.setString(3, txt_quantity.getText());
+            ps.setString(4, txt_rowcost.getText());
+
+            ps.executeUpdate();
+            Show_linkList_in_JTable();
+
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }//GEN-LAST:event_Btn_Add1ActionPerformed
 
     private void Btn_Update2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Update2ActionPerformed
