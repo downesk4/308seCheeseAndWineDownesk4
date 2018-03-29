@@ -1517,6 +1517,8 @@ public class ControlWindow extends javax.swing.JFrame {
 
     private void Btn_search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_search2ActionPerformed
         // TODO add your handling code here:
+        //linktable
+        Show_linkList_in_JTable();
     }//GEN-LAST:event_Btn_search2ActionPerformed
 
     /**
