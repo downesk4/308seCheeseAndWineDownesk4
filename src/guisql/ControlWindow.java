@@ -1259,6 +1259,9 @@ public class ControlWindow extends javax.swing.JFrame {
 
     private void JTable_linktableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable_linktableMouseClicked
         // TODO add your handling code here:
+        //linktable
+        int index = JTable_linktable.getSelectedRow();
+        ShowLinkItem(index);
     }//GEN-LAST:event_JTable_linktableMouseClicked
 
     private void Btn_Add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Add1ActionPerformed
@@ -1374,7 +1377,7 @@ public class ControlWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         //linktable
         pos2 = getTableList().size()-1;
-        ShowLinkItem(pos);
+        ShowLinkItem(pos2);
     }//GEN-LAST:event_Btn_Last2ActionPerformed
 
     /**
