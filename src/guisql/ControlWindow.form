@@ -97,33 +97,6 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txt_name" min="-2" pref="148" max="-2" attributes="0"/>
-                                      <Component id="txt_id" min="-2" pref="148" max="-2" attributes="0"/>
-                                      <Component id="txt_price" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
-                                      <Component id="txt_style" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel24" min="-2" pref="158" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
-                                  <Component id="jLabel23" min="-2" pref="105" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_search" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="Btn_search" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace pref="6" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -155,32 +128,7 @@
                                           <Component id="txt_cheesesboard" min="-2" pref="148" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="Btn_First1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="Btn_Previous1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Component id="Btn_Next1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="Btn_Last1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
-                                          <Component id="Btn_Add1" min="-2" pref="60" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="Btn_Update2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="Btn_Delete2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                                          <Component id="Btn_First2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="Btn_Previous2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Component id="Btn_Next2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="Btn_Last2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -212,21 +160,46 @@
                                               </Group>
                                           </Group>
                                       </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                                          <Component id="Btn_First1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Component id="Btn_Previous1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="Btn_Next1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="Btn_Last1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="Btn_Add1" min="-2" pref="60" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Btn_Update2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Btn_Delete2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                                          <Component id="Btn_First2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="Btn_Previous2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Component id="Btn_Next2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="Btn_Last2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="Btn_Insert" min="-2" pref="76" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="Btn_Update" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="Btn_Delete" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="Btn_First" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel24" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
+                                          <Component id="jLabel23" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txt_search" min="-2" pref="180" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Btn_search" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
@@ -234,24 +207,53 @@
                                               <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel18" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txt_rowcost" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <Component id="txt_quantity" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <Component id="txt_cheeseid" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <Component id="txt_boardid" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <Component id="txt_rowid" min="-2" pref="148" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="531" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="Btn_Previous" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Component id="Btn_Next" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txt_name" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <Component id="txt_id" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <Component id="txt_price" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <Component id="txt_style" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="Btn_Insert" min="-2" pref="76" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="Btn_Update" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="Btn_Delete" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="513" max="-2" attributes="0"/>
+                                          <Component id="Btn_First" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="Btn_Previous" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="Btn_Next" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                           <Component id="Btn_Last" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txt_rowcost" min="-2" pref="148" max="-2" attributes="0"/>
-                                      <Component id="txt_quantity" min="-2" pref="148" max="-2" attributes="0"/>
-                                      <Component id="txt_cheeseid" min="-2" pref="148" max="-2" attributes="0"/>
-                                      <Component id="txt_boardid" min="-2" pref="148" max="-2" attributes="0"/>
-                                      <Component id="txt_rowid" min="-2" pref="148" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="462" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -425,19 +427,15 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="Btn_Next1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="Btn_First1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Btn_Previous1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="Btn_Last1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                                  <Component id="Btn_Add1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Btn_Delete2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Btn_Update2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                                      <Component id="Btn_Next2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Btn_First2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Btn_Previous2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Btn_Last2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="Btn_Add1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Btn_Delete2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Btn_Update2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Btn_Next2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Btn_First2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Btn_Previous2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Btn_Last2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Btn_Previous1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1009,6 +1007,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_searchActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="Btn_search">
           <Properties>
