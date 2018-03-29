@@ -188,7 +188,7 @@ public class ControlWindow extends javax.swing.JFrame {
     
     //fill array with data
     
-    public ArrayList<cheesemain> getCheeseList() //cheeses
+    public ArrayList<cheesemain> getCheeseList(String ValToSearch) //cheeses
     {
             ArrayList<cheesemain> cheeseList = new ArrayList<cheesemain>();
             Connection con = getConnection();
@@ -199,7 +199,8 @@ public class ControlWindow extends javax.swing.JFrame {
         try {
             
             state = con.createStatement();
-            result = state.executeQuery(query);
+            String searchQuery = "SELECT * FROM cheese WHERE CONCAT(id,name,price,supplier,style,origin,milk,age,strength,rating,stock,info) LIKE '%"+ValToSearch+"%'";
+            result = state.executeQuery(searchQuery);
             cheesemain cheese; 
             
             while(result.next())
@@ -222,7 +223,7 @@ public class ControlWindow extends javax.swing.JFrame {
     public void Show_cheeseList_in_JTable()  //cheeses
     {
         
-        ArrayList<cheesemain> list = getCheeseList();
+        ArrayList<cheesemain> list = getCheeseList(txt_search.getText());
         DefaultTableModel model = (DefaultTableModel)JTable_cheese.getModel();
         
         
@@ -250,18 +251,18 @@ public class ControlWindow extends javax.swing.JFrame {
     public void ShowItem(int index) //cheese-to show in textfilds to prevent re typing
     {
         
-         txt_id.setText(Integer.toString(getCheeseList().get(index).getid()));
-         txt_name.setText(getCheeseList().get(index).getName());
-         txt_price.setText(Float.toString(getCheeseList().get(index).getPrice()));
-         txt_style.setText(getCheeseList().get(index).getStyle());
-         txt_supplier.setText(getCheeseList().get(index).getSupplier());
-         txt_origin.setText(getCheeseList().get(index).getOrigin());
-         txt_milk.setText(getCheeseList().get(index).getMilk());
-         txt_age.setText(Integer.toString(getCheeseList().get(index).getAge()));
-         txt_strength.setText(Integer.toString(getCheeseList().get(index).getStrength()));
-         txt_rating.setText(getCheeseList().get(index).getRating());
-         txt_stock.setText(Float.toString(getCheeseList().get(index).getStock()));
-         txt_info.setText(getCheeseList().get(index).getInfo());  
+         txt_id.setText(Integer.toString(getCheeseList(txt_search.getText()).get(index).getid()));
+         txt_name.setText(getCheeseList(txt_search.getText()).get(index).getName());
+         txt_price.setText(Float.toString(getCheeseList(txt_search.getText()).get(index).getPrice()));
+         txt_style.setText(getCheeseList(txt_search.getText()).get(index).getStyle());
+         txt_supplier.setText(getCheeseList(txt_search.getText()).get(index).getSupplier());
+         txt_origin.setText(getCheeseList(txt_search.getText()).get(index).getOrigin());
+         txt_milk.setText(getCheeseList(txt_search.getText()).get(index).getMilk());
+         txt_age.setText(Integer.toString(getCheeseList(txt_search.getText()).get(index).getAge()));
+         txt_strength.setText(Integer.toString(getCheeseList(txt_search.getText()).get(index).getStrength()));
+         txt_rating.setText(getCheeseList(txt_search.getText()).get(index).getRating());
+         txt_stock.setText(Float.toString(getCheeseList(txt_search.getText()).get(index).getStock()));
+         txt_info.setText(getCheeseList(txt_search.getText()).get(index).getInfo());  
     }
     
     public void ShowBoardItem(int index) //cheeseboard -- need to put in a class
@@ -362,6 +363,8 @@ public class ControlWindow extends javax.swing.JFrame {
         Btn_Previous2 = new javax.swing.JButton();
         Btn_Next2 = new javax.swing.JButton();
         Btn_Last2 = new javax.swing.JButton();
+        txt_search = new javax.swing.JTextField();
+        Btn_search = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -372,6 +375,12 @@ public class ControlWindow extends javax.swing.JFrame {
         jLabel2.setText("Name:");
 
         jLabel3.setText("Price:");
+
+        txt_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idActionPerformed(evt);
+            }
+        });
 
         txt_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -645,6 +654,19 @@ public class ControlWindow extends javax.swing.JFrame {
             }
         });
 
+        txt_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_searchActionPerformed(evt);
+            }
+        });
+
+        Btn_search.setText("Search");
+        Btn_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_searchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -802,13 +824,22 @@ public class ControlWindow extends javax.swing.JFrame {
                                         .addComponent(Btn_Next)
                                         .addGap(18, 18, 18)
                                         .addComponent(Btn_Last)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Btn_search)))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_search))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -868,7 +899,7 @@ public class ControlWindow extends javax.swing.JFrame {
                     .addComponent(Btn_First)
                     .addComponent(Btn_Previous)
                     .addComponent(Btn_Last))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1093,7 +1124,7 @@ public class ControlWindow extends javax.swing.JFrame {
 
     private void Btn_LastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LastActionPerformed
         // TODO add your handling code here:
-        pos = getCheeseList().size()-1;
+        pos = getCheeseList(txt_search.getText()).size()-1;
         ShowItem(pos);
     }//GEN-LAST:event_Btn_LastActionPerformed
 
@@ -1113,9 +1144,9 @@ public class ControlWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         pos++;
 
-        if(pos >= getCheeseList().size())
+        if(pos >= getCheeseList(txt_search.getText()).size())
         {
-            pos = getCheeseList().size()-1;
+            pos = getCheeseList(txt_search.getText()).size()-1;
         }
         ShowItem(pos);
     }//GEN-LAST:event_Btn_NextActionPerformed
@@ -1380,6 +1411,19 @@ public class ControlWindow extends javax.swing.JFrame {
         ShowLinkItem(pos2);
     }//GEN-LAST:event_Btn_Last2ActionPerformed
 
+    private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idActionPerformed
+
+    private void txt_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_searchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_searchActionPerformed
+
+    private void Btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_searchActionPerformed
+        // TODO add your handling code here:
+        Show_cheeseList_in_JTable();
+    }//GEN-LAST:event_Btn_searchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1437,6 +1481,7 @@ public class ControlWindow extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Update;
     private javax.swing.JButton Btn_Update1;
     private javax.swing.JButton Btn_Update2;
+    private javax.swing.JButton Btn_search;
     private javax.swing.JTable JTable_cheese;
     private javax.swing.JTable JTable_cheeseboard;
     private javax.swing.JTable JTable_linktable;
@@ -1483,6 +1528,7 @@ public class ControlWindow extends javax.swing.JFrame {
     private javax.swing.JTextField txt_rating;
     private javax.swing.JTextField txt_rowcost;
     private javax.swing.JTextField txt_rowid;
+    private javax.swing.JTextField txt_search;
     private javax.swing.JTextField txt_statusboard;
     private javax.swing.JTextField txt_stock;
     private javax.swing.JTextField txt_strength;
