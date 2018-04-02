@@ -1,0 +1,7 @@
+ID,Supplier,Cheese,style,Origin,age,milktype,strength,quantity,costPKG
+
+5464,tesco,cheese,hard,END,10,cow,4,100,3
+5473,tesco,bree,soft,FRA,12,goat,2,200,4
+7459,tesco,mouldy,blue,ITA,4,cow,6,300,5
+2413,tesco,chedder,hard,END,6,cow,5,400,3
+8462,tesco,redleicester,hard,ENG,12,cow,3,500,4
